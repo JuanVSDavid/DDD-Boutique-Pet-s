@@ -38,7 +38,7 @@ public class DetalleDeUnPedidoModificado extends DomainEvent {
                         .estadoDetallePedido(
                                 informacionDelDetalleDelPedido.value().esDelStock()
                                         ? new EstadoDetallePedido(co.com.boutiquepet.ddd.gestordepedidos.domain.enums.EstadoDetallePedido.POR_EMPACAR)
-                                        : new EstadoDetallePedido(co.com.boutiquepet.ddd.gestordepedidos.domain.enums.EstadoDetallePedido.POR_ASIGNAR)
+                                        : new EstadoDetallePedido(co.com.boutiquepet.ddd.gestordepedidos.domain.enums.EstadoDetallePedido.EN_PROCESO)
                         )
                         .build()
                 );
