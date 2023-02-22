@@ -40,5 +40,8 @@ public class PedidoEventChange extends EventChange {
         apply((ElEstadoDelPedidoModificadoASaldoADevolver event)->{
             pedido.estadoPedido = event.getEstadoPedido();
         });
+        apply((ElProcesoAsociadoAlPedidoFueAgregado event)->{
+            pedido.procesoId = event.getProcesoId();
+        });
     }
 }

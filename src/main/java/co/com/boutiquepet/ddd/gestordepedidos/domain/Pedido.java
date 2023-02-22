@@ -56,12 +56,16 @@ public class Pedido extends AggregateRoot<PedidoId> {
         }
     }
 
+    public void agregarElProcesoAsociadoAlPedido(ProcesoId procesoId){
+        appendChange(new ElProcesoAsociadoAlPedidoFueAgregado(procesoId)).apply();
+    }
+
     public void verificarSiElPedidoPuedeModificarse(){
         validacionDelPedido("El pedido ya no se puede modificar.", 2);
     }
 
     public void pagarElValorDelSaldoPendiente(BigDecimal valorCancelado, String idDeLaTransaccion){
-        appendChange(new PagadoElSaldoPendienteDelPedido(valorCancelado, idDeLaTransaccion, this.informacionDelPagoDelPedido)).apply();
+        appendChange(new PagadoElSaldoPendienteDelPedido(valorCancelado, idDeLaTransaccion, this.informacionDelPagoDelPedido, this.procesoId)).apply();
     }
 
     public void cancelarPedido(){
