@@ -7,6 +7,7 @@ import co.com.boutiquepet.ddd.gestordepedidos.domain.DetallePedido;
 import co.com.boutiquepet.ddd.gestordepedidos.domain.Proceso;
 import co.com.boutiquepet.ddd.gestordepedidos.domain.Tarea;
 import co.com.boutiquepet.ddd.gestordepedidos.domain.events.PedidoCreado;
+import co.com.boutiquepet.ddd.gestordepedidos.domain.values.ProcesoId;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -24,6 +25,7 @@ public class CrearProcesoPorCreacionDePedidoUseCase extends UseCaseForEvent<Pedi
             Proceso proceso =
                     Proceso
                             .builder()
+                            .id(ProcesoId.of(java.util.UUID.randomUUID().toString()))
                             .pedidoId(event.getPedidoId())
                             .administradorId(null)
                             .tareas(Proceso.crearTareas(event.getDetallePedidos()))
